@@ -1,0 +1,8 @@
+Start
+Step 1 : Declare the variables sum,marks[5],grade,avg 
+Step 2 : Store the marks of 5 subjects in the int array marks[5] using a for loop
+Step 3 : Calculate the sum of all 5 subjects in the for loop sum:= sum + marks[i]
+Step 4 : Calculate the avg of 5 subjects avg := sum/500 * 100
+Step 5 : write if else block to assign grade according to the avg and store the grade in a char variable grade
+Step 6 : print the final percentage and grade 
+Stop
