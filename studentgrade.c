@@ -12,8 +12,7 @@ int main()
         sum = sum + marks[i];
     }
     avg = sum / 5 ;
-    printf("You scored %f percentage\n",avg);
-    
+
    if(avg >= 90)
     {
         grade = 'A';
@@ -38,9 +37,7 @@ int main()
     {
         grade = 'F';
     }
-                    
-    printf("Your grade is %c \n", grade);
     
-    
-    
+    printf("You scored %f percentage\n",avg);                
+    printf("Your grade is %c \n", grade);   
 }
