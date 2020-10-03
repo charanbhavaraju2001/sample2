@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#global
+//global
 struct node
 {
 	int data;
@@ -91,18 +91,23 @@ void main(){
 	}
 }
 
-#function to print elements in SLL
+//function to print elements in SLL
 void printele(){
     struct node* p;
     p=root;
-    do {
-        printf("%d ",p->data);
-        p=p->link;
-    }while(p!=NULL);
-    printf("\n");
+    if(length()==0){
+        printf("The list is Empty\n");
+    }
+    else{
+        do {
+            printf("%d ",p->data);
+            p=p->link;
+        }while(p!=NULL);
+        printf("\n");
+    }
 }
 
-#function to insert element at beginning
+//function to insert element at beginning
 void insertatbegin(int item) {
 	struct node* temp ;
 	temp = (struct node*)malloc(sizeof(struct node));
@@ -112,7 +117,7 @@ void insertatbegin(int item) {
 
 }
 
-#function to insert element at the end /append function
+//function to insert element at the end /append function
 void insertatend(int item){
 	struct node* temp;
 
@@ -133,7 +138,7 @@ void insertatend(int item){
 	}
 }
 
-#insert function prototype
+//insert function prototype
 void insert(int item , int loc){
 	int i=1,len;
 	struct node* temp ;
@@ -156,7 +161,7 @@ void insert(int item , int loc){
 	}
 }
 
-#function to insert before an element 
+//function to insert before an element 
 void insertbefore(int item, int ele){
 	struct node* p;
 	p = root;
@@ -168,7 +173,7 @@ void insertbefore(int item, int ele){
 	insert(item,count-1);
 }
 
-#function to insert after an element
+//function to insert after an element
 void insertafter(int item, int ele){
 	struct node* p;
 	p = root;
@@ -180,19 +185,24 @@ void insertafter(int item, int ele){
 	insert(item,count);
 }
 
-#function to give the length of SLL
+//function to give the length of SLL
 int length(){
     int len=1;
     struct node* p;
     p=root;
-    while(p->link!=NULL){
-        p=p->link;
-        len++;
+    if(root==NULL){
+        return 0;
     }
-    return len;
+    else{
+        while(p->link!=NULL){
+            p=p->link;
+            len++;
+        }
+        return len;
+    }
 }
 
-#function to search For a given element in SLL
+//function to search For a given element in SLL
 void search(int x){
 	struct node* p;
 	p = root;
@@ -201,7 +211,6 @@ void search(int x){
 	    if(p->data==x){
 		printf("Element is found at position %d\n",count);
 		flag=1;
-        break;
 		}
 		p=p->link;
 		count++;
@@ -213,7 +222,7 @@ void search(int x){
 	
 }
 
-#function to delete at the starting position
+//function to delete at the starting position
 void deleteatbegin(){
 	struct node* p;
 	p = root;
@@ -222,8 +231,13 @@ void deleteatbegin(){
 	free(p);
 }
 
-#function to delete at the last position
+//function to delete at the last position
 void deleteatend(){
+    if(length()==1){
+        deleteatbegin();
+        
+    }
+    else{
     int loc,i=1;
     loc= length();
 	struct node* p;
@@ -237,28 +251,34 @@ void deleteatend(){
 	p->link=q->link;
 	q->link=NULL;
 	free(q);
+    }
 }
 
-#function to delete at a specified location
+//function to delete at a specified location
 void deleteatloc(){
 	int loc,i=1;
 	printf("Enter the location to be deleted\n");
 	scanf("%d",&loc);
-	if(loc>length()){
-		printf("Error : Limit Exceeded\n");
+	if(loc==1&&length()==1){
+	    deleteatbegin();
 	}
 	else{
-		struct node* p;
-		struct node* q;
-		p=root;
-		while(i<loc-1){
-			p=p->link;
-			i++;
-		}
-		q=p->link;
-		p->link=q->link;
-		q->link=NULL;
-		free(q);
-
+    	if(loc>length()){
+    		printf("Error : Limit Exceeded\n");
+    	}
+    	else{
+    		struct node* p;
+    		struct node* q;
+    		p=root;
+    		while(i<loc-1){
+    			p=p->link;
+    			i++;
+    		}
+    		q=p->link;
+    		p->link=q->link;
+    		q->link=NULL;
+    		free(q);
+    
+    	}
 	}
 }
